@@ -1,0 +1,183 @@
+{% extends 'base.html'%}
+{% block head%}
+<style>
+
+@font-face {
+  font-family: neon;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
+
+.banner {
+    padding-left: 24%;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.neon {
+  font-family: neon;
+  color: #FB4264;
+  font-size: 4vw;
+  line-height: 4vw;
+  text-shadow: 0 0 3vw #F40A35;
+}
+
+.flux {
+  font-family: neon;
+  color: #426DFB;
+  font-size: 4vw;
+  line-height: 4vw;
+  text-shadow: 0 0 3vw #2356FF;
+}
+
+.neon {
+  animation: neon 1s ease infinite;
+  -moz-animation: neon 1s ease infinite;
+  -webkit-animation: neon 1s ease infinite;
+}
+
+@keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+    color: #FED128;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+    color: #806914;
+  }
+}
+
+.flux {
+  animation: flux 2s linear infinite;
+  -moz-animation: flux 2s linear infinite;
+  -webkit-animation: flux 2s linear infinite;
+  -o-animation: flux 2s linear infinite;
+}
+
+@keyframes flux {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+    color: #28D7FE;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
+    color: #146C80;
+  }
+}
+
+#banner
+{
+    text-align:center;
+}
+#block1, #block2, #block3
+{
+    display:inline;
+}
+
+.glow-on-hover {
+    width: 180px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(52, 69, 228);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+</style>
+{% endblock %}
+{% block body%}
+<div class="banner" >
+    <div class="neon" id="block1">Song  </div>
+      <div class="flux" id="block2" >Genre </div>
+      <div class="neon" id="block3">Classification</div> 
+
+</div>
+<div class="container">
+<br><br>
+<div style="position: absolute; 
+left: 240px;
+right: 240px;
+top: 170px;
+bottom: 300px;
+height: 50%;
+text-align: center;
+padding-left: 10px;
+padding-top: 0;
+background-color: rgba(0, 0, 0, 0.498039);
+font-family: 'Montserrat', sans-serif;"
+ >
+ <a href="{{url_for('upload')}}"><button  class="glow-on-hover" type="button" style="position: absolute;margin-top: 30%;margin-left: -48%;">LET'S TRY</button>
+ </a>
+<pre style="color: whitesmoke;text-align:justify;font-size: 20px;">
+  Music genre classification is a popular problem in the domain of Music Information
+  Retrieval (MIR) used in many music streaming platforms such as Pandora.Our project
+  Song Genre Classification [SGC] mainly focuses on classification based on genre.We
+  used trained CNN model, which achieved accuracy of highest 82%.In this application
+  there are three simple steps to make prediction of Song
+    <ul style="color: whitesmoke;font-size: 18px;text-indent: inherit;">
+      <li style="margin-top: -5%;">Upload Song</li>
+      <li style="margin-top: -3%;">Predict by clicking Genre</li>
+      <li  style="margin-top: -3%;">See Results...</li>  
+    </ul>
+   
+</pre>
+
+    
+</div>
+</div>
+
+
+{% endblock %}

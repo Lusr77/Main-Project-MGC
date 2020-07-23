@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block head%}
+{% endblock %}
+{% block body%}
+<div style="margin: 2%;">
+    <br>
+    <br>
+{%for post in posts %}
+   <h3 style=" white-space: nowrap;"> {{post.title}}</h3>
+    <audio controls style="width: 500px;">
+      <source src="/static/{{post.title}}">
+    </audio>
+    <br>
+    <button class="btn btn-primary" ><a href="/post/predict/{{post.id}}" style="text-decoration: none;color: black;">Genre</a></button>  
+    <hr>
+{% endfor %}
+
+</div>
+
+{% endblock %}
